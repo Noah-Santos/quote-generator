@@ -1,10 +1,11 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react';
+import SingleQuote from './SingleQuote';
 
 const QuoteData = () => {
   const [quotes, setQuotes] = useState([]);
 
   useEffect(()=>{
-        fetch('https://api.quotable.io/random').then(response=>{
+        fetch('https://api.quotable.io/quotes/random?limit=5').then(response=>{
             if(response.status >= 200 && response.status < 300){
                 return response.json();
             }else{
@@ -15,11 +16,16 @@ const QuoteData = () => {
         })
     }, []);
 
-  console.log(quotes)
-  console.log(quotes.content)
-
   return (
-    <div>"{quotes.content}" - {quotes.author}</div>
+    <div>
+      {quotes.map(quote=>{
+        return (
+          <div key={quote.id}>
+            <SingleQuote quote={quote}></SingleQuote>
+          </div>
+        )
+      })}
+    </div>
   )
 }
 

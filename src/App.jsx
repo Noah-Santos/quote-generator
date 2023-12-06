@@ -1,12 +1,44 @@
-import {useState} from 'react';
-import QuoteData from './Components/QuoteData';
+import {useState, useEffect} from 'react';
+import SingleQuote from './Components/SingleQuote';
 
 function App() {
+  const [counts, setCounts] = useState(0);
+  const [quotes, setQuotes] = useState([]);
+
+  // useEffect that loads when count is changed
+  useEffect(()=>{
+      fetch('https://api.quotable.io/quotes/random?limit=3').then(response=>{
+          if(response.status >= 200 && response.status < 300){
+              return response.json();
+          }else{
+              throw new Error(response.statusText);
+          }
+      }).then(quote=>{
+          setQuotes(quote);
+      })
+  }, [counts]);
+  console.log(quotes)
+
+  // changes count to call the useEffect
+  let renew = ()=>{
+    setCounts(counts+1);
+  }
+
+  // userName: universalUser
+  // password: universal1234
+
   return (
-    <div className="App">
-      <QuoteData></QuoteData>
+    <div className='body'>
+      <div className="section">
+        {quotes.map(quote=>{
+          return (
+            <SingleQuote quote={quote} key={quote._id}/>
+          )
+        })}
+      </div>
+      <button onClick={renew}>New Quotes</button>
     </div>
-  );
+  )
 }
 
 export default App;

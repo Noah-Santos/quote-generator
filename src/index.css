@@ -5,7 +5,17 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(99, 99, 99);
+  background-color: rgb(21, 21, 21);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100vh;
+}
+
+#root{
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 code {
@@ -14,7 +24,13 @@ code {
 }
 
 .body{
-  background-color: rgb(212, 212, 212);
+  background-color: rgb(212, 212, 212  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  padding: 3rem;
+  border-radius: 2rem;
 }
 
 .section{
@@ -25,5 +41,61 @@ code {
 }
 
 .single{
-  width: 60%;
+  width: 90%;
+  text-align: center;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.author{
+  width: 100%;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 0.25rem;
+}
+
+.singleSection{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.refresh{
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 2rem;
+  padding: 1.5rem;
+}
+
+.animation{
+  animation: slide;
+  animation-duration: 1.5s;
+  transform: translateX(-200%);
+  animation-fill-mode: forwards;
+}
+
+.delay0{
+  animation-delay: 0.5s;
+}
+.delay00{
+  animation-delay: 0.75s;
+}
+.delay1{
+  animation-delay: 1.5s;
+}
+.delay11{
+  animation-delay: 1.75s;
+}
+.delay2{
+  animation-delay: 2.5s;
+}
+.delay22{
+  animation-delay: 2.75s;
+}
+
+@keyframes slide{
+  0%{transform: translateX(-200%);}
+  75%{transform: translateX(5%);}
+  100%{transform: translateX(0%);}
 }

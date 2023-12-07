@@ -30,13 +30,13 @@ function App() {
   return (
     <div className='body'>
       <div className="section">
-        {quotes.map(quote=>{
+        {quotes.map((quote, index)=>{
           return (
-            <SingleQuote quote={quote} key={quote._id}/>
+            <SingleQuote quote={quote} index={index} key={quote._id}/>
           )
         })}
       </div>
-      <button onClick={renew}>New Quotes</button>
+      <button onClick={renew} className='refresh'>New Quotes</button>
     </div>
   )
 }

@@ -7,7 +7,7 @@ function App() {
 
   // useEffect that loads when count is changed
   useEffect(()=>{
-      fetch('https://api.quotable.io/quotes/random?limit=3').then(response=>{
+      fetch('https://api.quotable.io/quotes/random?limit=3&maxLength=125').then(response=>{
           if(response.status >= 200 && response.status < 300){
               return response.json();
           }else{
